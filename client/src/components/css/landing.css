@@ -1,0 +1,37 @@
+/*#313D4F is the color of the image text*/
+
+div {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center;
+}
+
+div.h1{
+  color: #727D8C;
+  font-size: 32px;
+  font-family: font-family: "Lucida Console", Monaco, monospace;
+}
+
+div.img{
+  width:60%;
+}
+
+div.p {
+  color: #313d4f;
+  display: inline;
+  padding-top: 30px;
+  margin-top: 30px;
+}
+
+.Nav{
+  justified: true;
+  display: inline-block;
+  align-items: center
+  justify-content-center: true;
+}
+
+p.p-center{
+  display: block;
+  align-items: center;
+}
