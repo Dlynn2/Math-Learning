@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { register } from './UserFunctions'
-import { password }
-    from "../config"
+import password  from "../config/config.json"
 import {
     Button, Modal, ModalHeader, ModalBody, ModalFooter,
     Form, FormGroup, Label, Input, FormFeedback, FormText, Col
