@@ -1,0 +1,59 @@
+/*#313D4F is the color of the image text*/
+h1.header{
+  color: #313d4f;
+  font-size: 50px;
+  font-family: "Arial", sans-serif;
+  font-weight: bold;
+
+}
+div.content {
+  display: inline;
+  width:auto;
+  align-items: center;
+  width: 750px;
+  
+}
+
+div.body {
+  display: inline-block;
+  max-width: 750px;
+  margin: auto;
+  min-width: 350px;
+  margin-bottom: 50px;
+  background-color: #F9F2E7;
+  border-style: groove;
+  border-color:#313d4f;
+}
+
+div.text {
+  display: inherit;
+  margin: inherit;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-bottom: 1px;
+}
+
+h2.q {
+  font-size: 26px;
+  padding-left: 5px;
+  vertical-align: top;
+  text-align: left;
+
+}
+
+p.ans {
+  font-size: 16px;
+  padding-left: 10px;
+  text-align: left;
+  color: #727D8C;
+
+
+}
+
+tr.left{
+  text-align: left;
+}
+
+tr.right{
+  text-align: right;
+}

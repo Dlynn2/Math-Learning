@@ -1,9 +1,0 @@
-FormGroup.propTypes = {
-
-  check: true;
-
-}
-
-ul{
-    list-style: disc;
-}

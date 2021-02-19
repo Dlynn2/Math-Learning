@@ -1,0 +1,98 @@
+
+
+
+table.user-info{
+	
+	min-width: 350px;
+	max-width: 500px;
+	background-color: #F9F2E7;
+	border-style: double;
+	border-color: #313D4F;
+	border-width: 3px;
+	margin: auto;
+	padding-top: 10px;
+	padding-bottom: 5px;
+	table-layout:auto;
+
+}
+
+tbody.user-info{
+	align-items: left;
+	padding: 25px;
+
+
+}
+
+
+tr{
+
+	margin:auto;
+
+}
+
+td{
+	text-align: center;
+	padding: 10px;
+	font-size: 18px;
+	margin:auto;
+}
+
+td.label{
+	width:auto;
+	color: #727d8c;
+	padding:5px;
+	text-align: right;
+}
+
+
+td.field{
+	width:auto;
+	padding-left:0px;
+	text-align: left;
+	color: #EB716E;
+}
+
+td.join-butt{
+	margin-left: auto;
+
+
+}
+
+button{
+	padding: 5px;
+
+}
+
+#codes div{
+
+	align-items: center;
+
+}
+
+
+table{
+	
+
+	margin: auto;
+
+}
+
+
+
+tbody.user-info{
+
+	padding-left: 5px;
+
+}
+
+
+#students {
+	min-width:350px;
+	margin:auto;
+	max-width:75%;
+	border-style: solid;
+	border-color: #313D4F;
+	margin-bottom: 1rem;
+}
+
+
