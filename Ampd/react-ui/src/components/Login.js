@@ -47,7 +47,7 @@ class Login extends Component {
         return (
             <div>
                 <Form onSubmit={this.onSubmit}>
-                    <h1 class="header">Sign in!</h1>
+                    <h1 class="header">Sign In</h1>
                     <FormGroup>
                         <Col sm={4} className="mr-auto ml-auto">
                             <Input type="text"
@@ -67,7 +67,7 @@ class Login extends Component {
                         <Col sm={4} className="mr-auto ml-auto">
                             <Input type="password"
                                 name="passwordHash"
-                                placeholder="Enter Password"
+                                placeholder="Password"
                                 value={this.state.passwordHash}
                                 onChange={this.onChange}
                                 autoComplete="current-password"
@@ -77,6 +77,8 @@ class Login extends Component {
                         </Col>
                     </FormGroup>
                     <Button type="submit">Sign in</Button>
+                    <hr></hr>
+                    <p><a href="\register">Create Account</a></p>
                 </Form>
             </div>
         )
