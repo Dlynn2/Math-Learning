@@ -143,7 +143,7 @@ class Register extends Component {
         return (
             <div>
                 <Form onSubmit={this.onSubmit}>
-                    <h1 class="header">Sign Up!</h1>
+                    <h1 class="header">Register</h1>
                     <FormGroup>
                         {/* <Label className="mr-sm-2">First name</Label> */}
                         <Col sm={4} className="mr-auto ml-auto">
@@ -162,7 +162,7 @@ class Register extends Component {
                         <Col sm={4} className="mr-auto ml-auto">
                             <Input type="text"
                                 name="last_name"
-                                placeholder="Enter Last name"
+                                placeholder="Last Name"
                                 value={this.state.last_name}
                                 onChange={this.onChange}
                                 maxLength='15'
@@ -175,7 +175,7 @@ class Register extends Component {
                         <Col sm={4} className="mr-auto ml-auto">
                             <Input type="text"
                                 name="username"
-                                placeholder="Enter Username"
+                                placeholder="Username"
                                 value={this.state.username}
                                 onChange={this.onChange}
                                 maxLength='15'
@@ -194,7 +194,7 @@ class Register extends Component {
                         <Col sm={4} className="mr-auto ml-auto">
                             <Input type="password"
                                 name="password"
-                                placeholder="Enter Password"
+                                placeholder="Password"
                                 value={this.state.password}
                                 onChange={this.onChange}
                                 minLength='5'
@@ -256,7 +256,7 @@ class Register extends Component {
     study. I agree to participate in this
     research. I understand that I may later refuse to participate, and that I may withdraw from the study at
     any time. I have received a copy of this consent form for my own records.
-    AUTHORIZATION FOR VIDEOTAPING: 
+    AUTHORIZATION FOR VIDEOTAPING:
     I agree to be videotaped during instructional sessions.
                             </ModalBody>
                             <ModalFooter>
@@ -266,6 +266,8 @@ class Register extends Component {
                         </Modal>
                     </div>
                 </Form>
+                <br></br>
+                <p><a href="\login">Already have an account?</a></p>
             </div>
 
         )

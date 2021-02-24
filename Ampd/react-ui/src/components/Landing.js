@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
-import {Nav, NavItem, NavLink} from 'reactstrap'
+import {Button, Nav, NavItem, NavLink} from 'reactstrap'
 import logo from "./images/logo_update.png";
-import "./css/landing.css"
+import styles from "./css/landing.css"
 
 class Landing extends Component{
     render() {
@@ -17,16 +17,16 @@ class Landing extends Component{
                     <p>Thank you for participating
                       in this study.
                     </p>
-                  <p>Please <a href="\login"> log in </a> or <a href="\register">register </a>
-                     above.
-                  </p>
+                  <Button className='button' color="primary" size="lg" href="\login">Sign In</Button>
+                  <Button className="button" color="secondary" size="lg" href="\register">Register</Button>
+                  <hr></hr>
 		    <p> To learn more about the AMP'D Engagement project, read our <a href="\faq">F.A.Q.</a>
 			</p>
                   </div>
 
             </div>
-
             <hl></hl>
+
           </div>
         )
     }

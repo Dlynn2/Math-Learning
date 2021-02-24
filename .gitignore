@@ -2,6 +2,7 @@ node_modules/
 secrets.json
 client/build/**
 build/
+Ampd/database/db.js
 .DS_Store
 Ampd/.DS_Store
 Ampd/react-ui/.DS_Store

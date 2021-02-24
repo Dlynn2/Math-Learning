@@ -19,9 +19,16 @@ img{
   width: 100%;
 }
 
+.link{
+  color: rgb(127,127,127);
+}
+
 
 .NavbarBrand>img{
   padding: none;
+}
 
-
+.hamMenu{
+  width: 50px;
+  color: green;
 }
