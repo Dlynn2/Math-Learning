@@ -9,6 +9,7 @@ import { inClassNotificationSchedules } from "./SchedulingFunctions"
 import { DateTime } from "luxon"
 import "./css/Profile.css"
 
+var msg = require('./SendSMS');
 // var schedule = require('node-schedule');
 // var rule = new schedule.RecurrenceRule();
 class Profile extends Component {
@@ -361,8 +362,10 @@ class Profile extends Component {
 		{/*buttons moved to put profile info first*/}
 
 		{this.state.admin_level === '1' ?
+		//Changed to test texts
+		//<button onClick={() => subscribePush(this.state.userid)}> Subscribe </button>
 		<div>
-		<button onClick={() => subscribePush(this.state.userid)}> Subscribe </button>
+		<button onClick={() => msg.SendSMS()}> Send Text </button>
                 <button onClick={() => unsubscribePush()}> Unsubscribe </button>
 		<div>
                     <div id="subscriptionStatusWarn" style={{ display:'none',width:'60%', margin:'auto' }}>
