@@ -10,3 +10,5 @@ Ampd/react-ui/src/.DS_Store
 R/.DS_Store
 R/x86_64-pc-linux-gnu-library/.DS_Store
 Ampd/database/db.js
+Ampd/.env
+Ampd/react-ui/node_modules

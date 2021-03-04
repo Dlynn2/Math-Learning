@@ -1,8 +1,14 @@
+require('dotenv').config();
+
 const express = require('express');
 const path = require('path');
 const cluster = require('cluster');
 const numCPUs = require('os').cpus().length;
-var bodyParser = require("body-parser")
+const bodyParser = require('body-parser');
+const client = require('twilio')(
+  process.env.TWILIO_ACCOUNT_SID,
+  process.env.TWILIO_AUTH_TOKEN
+);
 
 const isDev = process.env.NODE_ENV !== 'production';
 const PORT = process.env.PORT || 5000;
@@ -22,12 +28,22 @@ if (!isDev && cluster.isMaster) {
 
 } else {
   const app = express();
+  app.use(bodyParser.urlencoded({ extended: false }));
+  app.use(bodyParser.json());
 
   // Priority serve any static files.
   app.use(express.static(path.resolve(__dirname, '../react-ui/build')));
 
-  app.use(bodyParser.json())
-  app.use(bodyParser.urlencoded({ extended:false}))
+  // Twilio Text API
+  app.post('/api/messages', (req, res) => {
+    res.header('Content-Type', 'application/json');
+    client.messages
+      .create({
+        from: process.env.TWILIO_PHONE_NUMBER,
+        to: req.body.to,
+        body: req.body.body
+      });
+  });
 
   // Answer API requests.
   app.get('/api', function (req, res) {
