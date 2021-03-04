@@ -57,4 +57,7 @@ Where 'newpassword' is whichever password you assigned when initializing the DB
 ### Voilà  
 You should now be able to run a development server  
 Run ```npm start```, first, in the **Ampd** directory  
-Run ```npm start```, second, in the **react-ui** directory
+Run ```npm start```, second, in the **react-ui** directory  
+
+#### **NOTE:**  
+I have noticed that whenever I shut off my computer (or even log off), I have to reinitialize the MySQL Server before running ```npm start``` in the respective directories. Just be sure to use the legacy password and keep it consistent with what you used before. You shouldn't have to re-import any data into the local DB.
