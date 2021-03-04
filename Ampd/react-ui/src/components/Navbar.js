@@ -46,7 +46,7 @@ class Navbar extends Component {
         const userLink = (
             <div>
                     <NavLink className="link" href="/profile">
-                        My Profile
+                        Home
                     </NavLink>
                 {/* <NavItem>
                     <NavLink className="link" href="/survey">
@@ -65,7 +65,7 @@ class Navbar extends Component {
         const derekLink = (
             <div>
                     <NavLink className="link" href="/profile">
-                        My Profile
+                        Home
                 </NavLink>
                     <NavLink className="link" href="/dataTables">
                         Data Tables
@@ -114,7 +114,6 @@ class Navbar extends Component {
                         <img src={menu} alt="AMP'd Engagement"></img>
                       </DropdownToggle>
                       <DropdownMenu>
-                        <NavLink className="link" href="/">Home</NavLink>
                         {localStorage.usertoken ? jwt_decode(localStorage.usertoken).accountType !== '1'? <NavLink className="link" href={"/shiny/sample-apps/mathLearningShiny/?teacherID="+jwt_decode(localStorage.usertoken).userid}>Test</NavLink> : <br style={{display:"none"}}></br>: <br style={{display:"none"}}></br>}
                         {localStorage.usertoken ? jwt_decode(localStorage.usertoken).accountType === '1' ? userLink : jwt_decode(localStorage.usertoken).accountType === '2' ? teacherLink : derekLink : loginRegLink}
                       </DropdownMenu>

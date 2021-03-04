@@ -5,6 +5,7 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter,Table,UncontrolledAl
 import axios from 'axios';
 import subscribePush from "./Subscription"
 import unsubscribePush from "./Unsubscribe"
+import logo_grey from "./images/logo_update_grey.png";
 import { inClassNotificationSchedules } from "./SchedulingFunctions"
 import { DateTime } from "luxon"
 import "./css/Profile.css"
@@ -352,13 +353,13 @@ class Profile extends Component {
                             <td class="label">Level {this.state.admin_level}</td>
                         </tr>
 			}
-			
+
 
                     </tbody>
                 </table>
 		</div>
 		<br/>
-		
+
 		{/*buttons moved to put profile info first*/}
 
 		{this.state.admin_level === '1' ?
@@ -408,7 +409,7 @@ class Profile extends Component {
 		   </table>
 
 		</div>
-                <div>
+                <div class="adminClasses">
                     {this.state.admin_level === '1' ? <h1 id='title'>Enrolled Classes</h1> :
 			<h1 id='title'>Administrated Classes</h1>}
                     <Table striped hover id='students'>
@@ -438,6 +439,24 @@ class Profile extends Component {
                         </tbody>
                     </Table>
 		</div>
+    <footer class="site-footer">
+      <div class="container">
+        <div class="row">
+          <div>
+            <img src={logo_grey} alt="AMP'd Engagement"></img>
+          </div>
+          <div class="col-sm-12 col-md-6">
+          </div>
+          <div class="col-xs-6 col-md-3">
+            <h6>Quick Links</h6>
+            <ul class="footer-links">
+              <li><a href="/profile">Home</a></li>
+              <li><a href="/faq">F.A.Q.</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+</footer>
             </div>
 
         )
@@ -445,6 +464,3 @@ class Profile extends Component {
 }
 
 export default Profile
-
-
-

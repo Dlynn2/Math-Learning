@@ -4,6 +4,6 @@ exports.SendSMS = function () {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({to: '+14062418478', body: 'Test message from AMPD Math.'})
+      body: JSON.stringify({to: '+14068502071', body: 'Test message from AMPD Math.'})
     });
 }

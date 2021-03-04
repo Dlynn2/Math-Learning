@@ -3,6 +3,8 @@ import { CSVLink } from 'react-csv'
 import axios from 'axios'
 import { addAdmin, getDataTable, isClassNow, getCurrentClass, getSubscription, setSubscription, getSubscriptionsFor } from './UserFunctions'
 import { Table } from 'reactstrap'
+import "./css/Profile.css"
+import logo_grey from "./images/logo_update_grey.png";
 class DataTables extends Component {
 	constructor() {
 		super()
@@ -75,6 +77,24 @@ class DataTables extends Component {
 				<div>
 					<p>{this.count} more entries</p>
 				</div>
+				<footer class="site-footer">
+		      <div class="container">
+		        <div class="row">
+		          <div>
+		            <img src={logo_grey} alt="AMP'd Engagement"></img>
+		          </div>
+		          <div class="col-sm-12 col-md-6">
+		          </div>
+		          <div class="col-xs-6 col-md-3">
+		            <h6>Quick Links</h6>
+		            <ul class="footer-links">
+		              <li><a href="/profile">Home</a></li>
+		              <li><a href="/faq">F.A.Q.</a></li>
+		            </ul>
+		          </div>
+		        </div>
+		      </div>
+		</footer>
 			</div>
 		)
 	}

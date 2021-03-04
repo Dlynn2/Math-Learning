@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {Button, Nav, NavItem, NavLink} from 'reactstrap'
 import logo from "./images/logo_update.png";
+import logo_grey from "./images/logo_update_grey.png";
 import styles from "./css/landing.css"
 
 class Landing extends Component{
@@ -26,7 +27,19 @@ class Landing extends Component{
 
             </div>
             <hl></hl>
-
+            <footer class="site-footer">
+              <div class="container">
+                <div class="row">
+                  <div>
+                    <img src={logo_grey} alt="AMP'd Engagement"></img>
+                  </div>
+                  <div class="col-sm-12 col-md-6">
+                  </div>
+                  <div class="col-xs-6 col-md-3">
+                  </div>
+                </div>
+              </div>
+        </footer>
           </div>
         )
     }
