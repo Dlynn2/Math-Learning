@@ -9,6 +9,7 @@ export const register = newUser => {
         .post('users/register', {
             fName: newUser.first_name,
             lName: newUser.last_name,
+            phonenumber: newUser.phonenumber,
             username: newUser.username,
             passwordHash: newUser.password,
             dev_pass: newUser.dev_pass,

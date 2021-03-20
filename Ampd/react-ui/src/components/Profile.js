@@ -19,6 +19,7 @@ class Profile extends Component {
         this.state = {
             first_name: '',
             last_name: '',
+            phonenumber: '',
             student_id: '',
             class_code: '',
             userid: '',
@@ -62,6 +63,7 @@ class Profile extends Component {
             userid: decoded.userid,
             first_name: decoded.fName,
             last_name: decoded.lName,
+            phonenumber: decoded.phonenumber,
             username: decoded.username,
             admin_level: decoded.accountType
         })
@@ -334,6 +336,11 @@ class Profile extends Component {
 
                             <td class="label">Last Name: </td>
                             <td class="field">{this.state.last_name}</td>
+                        </tr>
+                        <tr>
+
+                            <td class="label">Phone Number: </td>
+                            <td class="field">{this.state.phonenumber}</td>
                         </tr>
                         <tr>
 

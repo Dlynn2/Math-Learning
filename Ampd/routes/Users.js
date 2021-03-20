@@ -491,6 +491,7 @@ users.post('/register', (req, res) => {
     const userData = {
         fName: req.body.fName,
         lName: req.body.lName,
+        phonenumber: req.body.phonenumber,
         username: req.body.username,
         passwordHash: req.body.passwordHash,
         accountType: req.body.accountType,
@@ -556,7 +557,7 @@ users.post('/login', (req, res) => {
             res.status(400)
         })
 })
-
+//
 users.post('/survey', (req, res) => {
     const answers = {
         UserID: req.body.userid,

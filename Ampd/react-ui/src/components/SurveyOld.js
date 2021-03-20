@@ -17,6 +17,7 @@ class Survey extends Component {
             skill: '',
             first_name: '',
             last_name: '',
+            phonenumber: '',
             username: ''
         }
 
@@ -28,6 +29,7 @@ class Survey extends Component {
         this.setState({
             first_name: jwt_decode(localStorage.usertoken).fName,
             last_name: jwt_decode(localStorage.usertoken).lName,
+            phonenumber: jwt_decode(localStorage.usertoken).phonenumber,
             username: jwt_decode(localStorage.usertoken).username
         })
     }
@@ -72,6 +74,7 @@ class Survey extends Component {
         const answers = {
             first_name: this.state.first_name,
             last_name: this.state.last_name,
+            phonenumber: this.state.phonenumber,
             username: this.state.username,
             engagement: this.state.engagement,
             enjoyment: this.state.enjoyment,

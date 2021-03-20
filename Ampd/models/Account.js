@@ -18,6 +18,9 @@ module.exports = db.sequelize.define(
         username: {
             type: Sequelize.STRING,
         },
+        phonenumber: {
+            type: Sequelize.STRING,
+        },
         passwordHash: {
             type: Sequelize.STRING
         },
