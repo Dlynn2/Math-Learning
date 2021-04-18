@@ -19,6 +19,7 @@ class Profile extends Component {
         this.state = {
             first_name: '',
             last_name: '',
+            email: '',
             phonenumber: '',
             student_id: '',
             class_code: '',
@@ -63,6 +64,7 @@ class Profile extends Component {
             userid: decoded.userid,
             first_name: decoded.fName,
             last_name: decoded.lName,
+            email: decoded.email,
             phonenumber: decoded.phonenumber,
             username: decoded.username,
             admin_level: decoded.accountType
@@ -344,6 +346,11 @@ class Profile extends Component {
                         </tr>
                         <tr>
 
+                            <td class="label">Email: </td>
+                            <td class="field">{this.state.email}</td>
+                        </tr>
+                        <tr>
+
                             <td class="label">Username: </td>
                             <td class="field">{this.state.username}</td>
                         </tr>
@@ -369,11 +376,12 @@ class Profile extends Component {
 
 		{/*buttons moved to put profile info first*/}
 
-		{this.state.admin_level === '1' ?
+		{this.state.admin_level === '3' ?
 		//Changed to test texts
 		//<button onClick={() => subscribePush(this.state.userid)}> Subscribe </button>
 		<div>
 		<button onClick={() => msg.SendSMS()}> Send Text </button>
+    <a href="/survey"> SURVEY </a>
                 <button onClick={() => unsubscribePush()}> Unsubscribe </button>
 		<div>
                     <div id="subscriptionStatusWarn" style={{ display:'none',width:'60%', margin:'auto' }}>

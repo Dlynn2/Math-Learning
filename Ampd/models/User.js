@@ -15,6 +15,9 @@ module.exports = db.sequelize.define(
         last_name: {
             type: Sequelize.STRING
         },
+        email: {
+            type: Sequelize.STRING
+        },
         phonenumber: {
             type: Sequelize.STRING
         },
