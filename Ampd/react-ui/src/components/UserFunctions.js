@@ -9,6 +9,8 @@ export const register = newUser => {
         .post('users/register', {
             fName: newUser.first_name,
             lName: newUser.last_name,
+            email: newUser.email,
+            phonenumber: newUser.phonenumber,
             username: newUser.username,
             passwordHash: newUser.password,
             dev_pass: newUser.dev_pass,
@@ -216,9 +218,13 @@ export const create_class = classdetails =>{
 }
 
 export const survey = answers => {
+  console.log(answers);
     return axios
         .post('users/survey', {
             userid: answers.userid,
+            RecipientLastName: answers.RecipientLastName,
+            RecipientFirstName: answers.RecipientFirstName,
+            RecipientEmail: answers.RecipientEmail,
             classid: answers.classid,
 	    obsid: answers.obsid,
             concentration: answers.concentration,

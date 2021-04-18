@@ -3,7 +3,7 @@ import {
     Button, Modal, ModalHeader, ModalBody,
     ModalFooter, ButtonGroup
 } from 'reactstrap';
-import { survey, getCurrentClass } from "./UserFunctions"
+import { survey, getCurrentClass, getEnrolledClasses } from "./UserFunctions"
 import jwt_decode from 'jwt-decode'
 class Survey extends Component {
     constructor() {
@@ -11,6 +11,7 @@ class Survey extends Component {
         this.state = {
             modal: true,
             userid: '',
+            RecipientLastName: '',
             obsid: -1,
             classid: '',
             concentration: '',
@@ -33,19 +34,26 @@ class Survey extends Component {
         window.location.href.replace(/((obsID)=(.*))/, function (m, key, other, value) {
             vars[other] = value;
         });
-
         return vars;
     }
 
     async componentDidMount() {
-        var foundUserid = jwt_decode(localStorage.usertoken).userid
-        var urlID = this.getUrlVars()
-        this.setState({
-            userid: foundUserid,
-            classid: this.getUrlVars()["classID"],
-            obsid: this.getUrlVars()["obsID"]
-        })
-        console.log(urlID)
+      console.log("Starting...");
+        if ((localStorage.usertoken) != null){
+          console.log("Mounting...");
+          var foundUserid = jwt_decode(localStorage.usertoken).userid
+          var urlID = this.getUrlVars()
+          this.setState({
+              userid: foundUserid,
+              obsid: this.getUrlVars()["obsID"]
+          })
+        }
+        else{
+          alert("User not logged in. Please log in first, then try the survey link again...");
+          console.log("Redirecting...");
+          window.location.href = '\login';
+          console.log("Redirected.");
+        }
     }
 
     toggle() {
@@ -84,25 +92,54 @@ class Survey extends Component {
     }
     submit(e) {
         e.preventDefault()
-        console.log("Class: " + this.state.classid)
-        const answers = {
-            userid: this.state.userid,
-            classid: this.state.classid,
-            obsid: this.state.obsid,
-            concentration: this.state.concentration,
-            enjoyment: this.state.enjoyment,
-            interest: this.state.interest,
-            challenge: this.state.challenge,
-            skill: this.state.skill
-        }
-        if (answers.classid < 1) {
-            alert("You're not currently in a class!")
-        }
-        else {
-            survey(answers)
-        }
-        this.toggle()
-        this.props.history.push('/profile')
+        var finalUserID = jwt_decode(localStorage.usertoken).userid;
+        const promise1 = new Promise((resolve, reject) => {
+          resolve(getEnrolledClasses(finalUserID)
+            .then(result => result.data[0].ClassID)
+            .then(res => {
+              return res;
+            }));
+        });
+        promise1.then((value) => {
+          const token = localStorage.usertoken
+          const decoded = jwt_decode(token)
+          this.setState({
+              classid: value,
+          })
+          const answers = {
+              userid: this.state.userid,
+              RecipientLastName: decoded.lName,
+              RecipientFirstName: decoded.fName,
+              RecipientEmail: decoded.email,
+              classid: this.state.classid,
+              obsid: this.state.obsid,
+              concentration: this.state.concentration,
+              enjoyment: this.state.enjoyment,
+              interest: this.state.interest,
+              challenge: this.state.challenge,
+              skill: this.state.skill,
+              RecipientLastName: decoded.lName
+          }
+          if (answers.classid < 1) {
+              alert("You're not currently in a class!")
+          }
+          else {
+              survey(answers)
+          }
+          this.toggle()
+          this.props.history.push('/profile')
+          // expected output: "Success!"
+        });
+        /*const answers = {
+          userid: 80,
+          classid: 49,
+          obsid: 1,
+          concentration: 1,
+          enjoyment: 1,
+          interest: 1,
+          challenge: 1,
+          skill: 1
+        }*/
     }
     render() {
         return (

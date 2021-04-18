@@ -4,34 +4,46 @@ const db = require("../database/db")
 module.exports = db.sequelize.define(
     'SURVEY_RESPONSE',
     {
-	Timestamp: {
+	RecordedDate: {
 	    type: Sequelize.DATE,
 	    defaultValue: Sequelize.NOW
 	},
 	ObsID: {
 	    type: Sequelize.INTEGER
 	},
-        UserID: {
-            type: Sequelize.INTEGER,
-            primaryKey: true,
-        },
-        ClassID: {
-            type: Sequelize.INTEGER,
-            primaryKey: true
-        },
-        Concentration: {
-            type: Sequelize.INTEGER
-        },
-	Enjoyment: {
+  ResponseId: {
+      type: Sequelize.INTEGER,
+      primaryKey: true,
+  },
+  RecipientLastName: {
+	    type: Sequelize.STRING,
+      defaultValue: null
+	},
+  RecipientFirstName: {
+	    type: Sequelize.STRING,
+      defaultValue: null
+	},
+  RecipientEmail: {
+	    type: Sequelize.STRING,
+      defaultValue: null
+	},
+  ClassID: {
+      type: Sequelize.INTEGER,
+      primaryKey: true
+  },
+  Q1_1: {
+      type: Sequelize.INTEGER
+  },
+	Q1_2: {
 	    type: Sequelize.INTEGER
 	},
-	Interest: {
+	Q1_3: {
 	    type: Sequelize.INTEGER
 	},
-	Challenge: {
+	Q1_4: {
 	    type: Sequelize.INTEGER
 	},
-	Skill: {
+	Q1_5: {
 	    type: Sequelize.INTEGER
 	}
     },
