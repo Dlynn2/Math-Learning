@@ -562,10 +562,10 @@ users.post('/login', (req, res) => {
 users.post('/survey', (req, res) => {
   var obsIDRand = Math.random().toString(36).substring(2);
     const answers = {
-        ResponseId: req.body.userid,
-        RecipientLastName: req.body.RecipientLastName,
-        RecipientFirstName: req.body.RecipientFirstName,
-        RecipientEmail: req.body.RecipientEmail,
+        //ResponseId: req.body.userid,
+        //RecipientLastName: req.body.RecipientLastName,
+        //RecipientFirstName: req.body.RecipientFirstName,
+        //RecipientEmail: req.body.RecipientEmail,
 	ObsID: obsIDRand,
         ClassID: req.body.classid,
         StartTime: req.body.startTime,
