@@ -306,7 +306,7 @@ async function getClassTimes(cid) {
 async function getDatatable() {
 	var foundData = ""
 	await Survey.findAll({
-		order: [['Timestamp', 'ASC']]
+		order: [['RecordedDate', 'ASC']]
 	})
 	.then(data => {
 		//console.log("Raw Datatable Data: "+data)
@@ -387,7 +387,7 @@ users.get('/profile/classes', (req, res) => {
 })
 users.get('/dataTables', (req, res) => {
     Survey.findAll({
-        attributes: ['UserID','Engagement', 'Interest', 'Enjoyment', 'Challenge', 'Skill']
+        attributes: ['RecordedDate','Q1_1', 'Q1_2', 'Q1_3', 'Q1_4', 'Q1_5', 'ClassID', 'StartTime', 'EndTime', 'ObsID']
     })
         .then(responses => {
             res.send(JSON.stringify(responses))
@@ -491,6 +491,8 @@ users.post('/register', (req, res) => {
     const userData = {
         fName: req.body.fName,
         lName: req.body.lName,
+        email: req.body.email,
+        phonenumber: req.body.phonenumber,
         username: req.body.username,
         passwordHash: req.body.passwordHash,
         accountType: req.body.accountType,
@@ -556,17 +558,20 @@ users.post('/login', (req, res) => {
             res.status(400)
         })
 })
-
+//
 users.post('/survey', (req, res) => {
     const answers = {
-        UserID: req.body.userid,
+        ResponseId: req.body.userid,
+        RecipientLastName: req.body.RecipientLastName,
+        RecipientFirstName: req.body.RecipientFirstName,
+        RecipientEmail: req.body.RecipientEmail,
 	ObsID: req.body.obsid,
         ClassID: req.body.classid,
-	Concentration: req.body.concentration,
-	Enjoyment: req.body.enjoyment,
-	Interest: req.body.interest,
-	Challenge: req.body.challenge,
-	Skill: req.body.skill
+	Q1_1: req.body.concentration,
+	Q1_2: req.body.enjoyment,
+	Q1_3: req.body.interest,
+	Q1_4: req.body.challenge,
+	Q1_5: req.body.skill
     }
     Survey.create(answers)
     res.send("here")

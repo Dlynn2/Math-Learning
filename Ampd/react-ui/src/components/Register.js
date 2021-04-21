@@ -18,6 +18,8 @@ class Register extends Component {
         this.state = {
             first_name: '',
             last_name: '',
+            email: '',
+            phonenumber: '',
             username: '',
             password: '',
             password_c: '',
@@ -68,6 +70,8 @@ class Register extends Component {
             const teacher = {
                 first_name: this.state.first_name,
                 last_name: this.state.last_name,
+                email: this.state.email,
+                phonenumber: this.state.phonenumber,
                 username: this.state.username,
                 password: this.state.password,
                 dev_pass: this.state.dev_pass,
@@ -103,6 +107,8 @@ class Register extends Component {
             const user = {
                 first_name: this.state.first_name,
                 last_name: this.state.last_name,
+                email: this.state.email,
+                phonenumber: this.state.phonenumber,
                 username: this.state.username,
                 password: this.state.password,
                 dev_pass: this.state.dev_pass,
@@ -166,6 +172,33 @@ class Register extends Component {
                                 value={this.state.last_name}
                                 onChange={this.onChange}
                                 maxLength='15'
+                                required
+                            />
+                        </Col>
+                    </FormGroup>
+                    <FormGroup>
+                        {/* <Label>Phone Number</Label> */}
+                        <Col sm={4} className="mr-auto ml-auto">
+                            <Input type="text"
+                                name="phonenumber"
+                                placeholder="Phone Number (No dashes)"
+                                value={this.state.phonenumber}
+                                onChange={this.onChange}
+                                pattern = "[0-9]{3}[0-9]{3}[0-9]{4}"
+                                maxLength='10'
+                                required
+                            />
+                        </Col>
+                    </FormGroup>
+                    <FormGroup>
+                        {/* <Label>Last name</Label> */}
+                        <Col sm={4} className="mr-auto ml-auto">
+                            <Input type="text"
+                                name="email"
+                                placeholder="Email"
+                                value={this.state.email}
+                                onChange={this.onChange}
+                                maxLength='255'
                                 required
                             />
                         </Col>
