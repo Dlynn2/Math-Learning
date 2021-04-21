@@ -5,6 +5,7 @@ import { addAdmin, getDataTable, isClassNow, getCurrentClass, getSubscription, s
 import { Table } from 'reactstrap'
 import "./css/Profile.css"
 import logo_grey from "./images/logo_update_grey.png";
+
 class DataTables extends Component {
 	constructor() {
 		super()
@@ -20,6 +21,7 @@ class DataTables extends Component {
 		this.count = this.respData.data.length-5
 		this.displayData = this.respData.data.slice(this.count)
 		this.setState(this.respData.data)
+		console.log(this.state)
 	}
 
 	async componentDidMount() {
@@ -38,20 +40,19 @@ class DataTables extends Component {
 	}
 	renderTableData() {
 		return this.state.survey_data.map((survies, index) => {
-			const { ResponseId, ClassID, ObsID, Concentration, Interest, Enjoyment, Challenge, Skill, RecordedDate, StartTime, EndTime } = survies //destructuring
+			const { RecordedDate, Q1_1, Q1_2, Q1_3, Q1_4, Q1_5, ClassID, StartTime, EndTime, ObsID } = survies //destructuring
 			return (
-				<tr key={ResponseId}>
+				<tr key={RecordedDate}>
 					<td>{RecordedDate}</td>
-					<td>{ObsID}</td>
-					<td>{ResponseId}</td>
+					<td>{Q1_1}</td>
+					<td>{Q1_2}</td>
+					<td>{Q1_3}</td>
+					<td>{Q1_4}</td>
+					<td>{Q1_5}</td>
 					<td>{ClassID}</td>
-					<td>{Concentration}</td>
-					<td>{Enjoyment}</td>
-					<td>{Interest}</td>
-					<td>{Challenge}</td>
-					<td>{Skill}</td>
-					<td>{StartTime}</td>
-					<td>{EndTime}</td>
+                    <td>{StartTime}</td>
+                    <td>{EndTime}</td>
+					<td>{ObsID}</td>
 				</tr>
 			)
 		})
