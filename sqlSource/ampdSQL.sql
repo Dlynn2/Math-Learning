@@ -116,9 +116,9 @@ NOT EXISTS `mathLearningDB`.`SURVEY_RESPONSE` (
   `Q1_4` INT NULL,
   `Q1_5` INT NULL,
   `ClassID` INT NOT NULL,
-  `StartTime` TIME NULL,
-  `EndTime` TIME NULL,
-  `ObsID` INT NULL,
+  `StartTime` VARCHAR(45) NULL,
+  `EndTime` VARCHAR(45) NULL,
+  `ObsID` VARCHAR(12) NOT NULL,
   PRIMARY KEY (`ResponseId`, `RecordedDate`, `ClassID`))
 ENGINE = InnoDB;
 

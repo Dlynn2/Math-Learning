@@ -45,7 +45,13 @@ module.exports = db.sequelize.define(
 	},
 	Q1_5: {
 	    type: Sequelize.INTEGER
-	}
+	},
+  StartTime: {
+      type: Sequelize.STRING
+  },
+  EndTime: {
+      type: Sequelize.STRING
+  }
     },
     {
 	freezeTableName: true,

@@ -3,7 +3,7 @@ import {
     Button, Modal, ModalHeader, ModalBody,
     ModalFooter, ButtonGroup
 } from 'reactstrap';
-import { survey, getCurrentClass, getEnrolledClasses } from "./UserFunctions"
+import { survey, getCurrentClass, getEnrolledClasses, getAllEnrolledTimes, getEnrolledIn } from "./UserFunctions"
 import jwt_decode from 'jwt-decode'
 class Survey extends Component {
     constructor() {
@@ -18,7 +18,9 @@ class Survey extends Component {
             enjoyment: '',
             interest: '',
             challenge: '',
-            skill: ''
+            skill: '',
+            startTime: '',
+            endTime: ''
         }
 
         this.toggle = this.toggle.bind(this)
@@ -47,6 +49,32 @@ class Survey extends Component {
               userid: foundUserid,
               obsid: this.getUrlVars()["obsID"]
           })
+          const promise2 = new Promise((resolve, reject) => {
+            resolve(getAllEnrolledTimes(foundUserid)
+              .then(res => {
+                return JSON.stringify(res).slice(23,31);
+              }));
+          });
+          promise2.then((value) => {
+            const token = localStorage.usertoken
+            const decoded = jwt_decode(token)
+            this.setState({
+                startTime: value
+            })
+          });
+          const promise3 = new Promise((resolve, reject) => {
+            resolve(getAllEnrolledTimes(foundUserid)
+              .then(res => {
+                return JSON.stringify(res).slice(44,52);
+              }));
+          });
+          promise3.then((value) => {
+            const token = localStorage.usertoken
+            const decoded = jwt_decode(token)
+            this.setState({
+                endTime: value
+            })
+          });
         }
         else{
           alert("User not logged in. Please log in first, then try the survey link again...");
@@ -118,7 +146,9 @@ class Survey extends Component {
               interest: this.state.interest,
               challenge: this.state.challenge,
               skill: this.state.skill,
-              RecipientLastName: decoded.lName
+              RecipientLastName: decoded.lName,
+              startTime: this.state.startTime,
+              endTime: this.state.endTime
           }
           if (answers.classid < 1) {
               alert("You're not currently in a class!")
