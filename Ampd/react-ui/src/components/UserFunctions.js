@@ -175,6 +175,19 @@ export const getEnrolledClasses = sid => {
 		})
 }
 
+export const getEnrolledIn = sid => {
+	return axios
+		.post('users/profile/enrolledClasses', {
+			sid: sid
+		})
+		.then(res =>{
+			return res
+		},
+		err=>{
+			console.log("getEnrolledClasses ERR: "+err)
+		})
+}
+
 export const getDataTable = unused => {
 	return axios
 		.post('users/profile/datatable', {})
@@ -231,7 +244,9 @@ export const survey = answers => {
 	    enjoyment: answers.enjoyment,
 	    interest: answers.interest,
 	    challenge: answers.challenge,
-	    skill: answers.skill
+	    skill: answers.skill,
+      startTime: answers.startTime,
+      endTime: answers.endTime
         })
         .then(res => {
             console.log(res)

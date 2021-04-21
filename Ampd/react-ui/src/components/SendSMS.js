@@ -23,6 +23,8 @@ exports.SendSMS = function () {
     /*var sectionID = 0;
     var firstSendMinute = 1;
     var secondSendMinute = 2;
+
+
     // these are details that will be bound to notifications
     var studentDetails = {
 	      userid:this.userid,
@@ -41,12 +43,16 @@ exports.SendSMS = function () {
     console.log("UserID: " + jwt_decode(localStorage.usertoken).userid);
     console.log("ClassID: " + jwt_decode(localStorage.usertoken).classID);
     console.log("Phone Number: " + jwt_decode(localStorage.usertoken).phonenumber);
+
+
     var test = schedule.scheduleJob(firstSendMinute.toString() + ' * * * *', function (student) {
         axios.post("push/surveyNotification", {
             userid: student.userid,
             classID:student.classID,
             sectionID:student.sectionID
         })
+
+
         var  studentDet = {
          userid:student.userid,
          classID:student.classID,
@@ -66,5 +72,4 @@ exports.SendSMS = function () {
       }.bind(null, studentDetails))
       console.log("Test: " + test);
       //console.log("Test2: " + test2);*/
-
 }

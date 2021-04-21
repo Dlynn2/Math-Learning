@@ -1,6 +1,7 @@
 import React, {Component, useState} from 'react'
 import {Nav, NavItem, NavLink} from 'reactstrap'
 import {TabContent, TabPane, Card, Button, CardTitle, CardText, Row, Col } from 'reactstrap';
+import logo_grey from "./images/logo_update_grey.png";
 import classnames from 'classnames';
 import "./css/faq.css"
 
@@ -27,7 +28,7 @@ class FAQ extends Component{
               <br></br>
               <div class="body">
                 <div class="text">
-                <h2 class="q">What is AMPD?</h2>
+                <h2 class="q">What is AMP'D?</h2>
                     <p class ="ans">AMPD is an acronym for Accessing Mathematical Practices & Development through
                   Engagement. AMPD Engagement is an ongoing endeavor in educational research at Montana
                   State University focused on quantifying student engagement in the process of learning
@@ -54,6 +55,24 @@ class FAQ extends Component{
                     devices are not supported but will be operational in the near future.</p>
               </div>
           </div>
+          <footer class="site-footer">
+            <div class="container">
+              <div class="row">
+                <div>
+                  <img src={logo_grey} alt="AMP'd Engagement"></img>
+                </div>
+                <div class="col-sm-12 col-md-6">
+                </div>
+                <div class="col-xs-6 col-md-3">
+                  <h6>Quick Links</h6>
+                  <ul class="footer-links">
+                    <li><a href="/profile">Home</a></li>
+                    <li><a href="/faq">F.A.Q.</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+      </footer>
         </div>
         )
     }

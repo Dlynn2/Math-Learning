@@ -191,7 +191,7 @@ class Register extends Component {
                         </Col>
                     </FormGroup>
                     <FormGroup>
-                        {/* <Label>Last name</Label> */}
+                        {/* <Label>Email</Label> */}
                         <Col sm={4} className="mr-auto ml-auto">
                             <Input type="text"
                                 name="email"

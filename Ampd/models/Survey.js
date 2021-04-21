@@ -39,6 +39,12 @@ module.exports = db.sequelize.define(
         skill: {
             type: Sequelize.INTEGER
         },
+        StartTime: {
+          type: Sequelize.STRING
+        },
+        EndTime: {
+          type: Sequelize.STRING
+        },
         timestamp:{
             type: Sequelize.DATE,
             defaultValue: Sequelize.NOW
