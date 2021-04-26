@@ -245,8 +245,8 @@ export const survey = answers => {
 	    interest: answers.interest,
 	    challenge: answers.challenge,
 	    skill: answers.skill,
-      startTime: answers.startTime,
-      endTime: answers.endTime
+      	    startTime: answers.startTime,
+      	    endTime: answers.endTime
         })
         .then(res => {
             console.log(res)
