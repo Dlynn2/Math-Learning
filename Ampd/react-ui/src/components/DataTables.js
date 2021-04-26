@@ -41,22 +41,22 @@ class DataTables extends Component {
 	renderTableData() {
 		return this.state.survey_data.map((survies, index) => {
 			const { RecordedDate, Q1_1, Q1_2, Q1_3, Q1_4, Q1_5, ClassID, StartTime, EndTime, ObsID } = survies //destructuring
-			return (
-				<tr key={RecordedDate}>
-					<td>{RecordedDate}</td>
-					<td>{Q1_1}</td>
-					<td>{Q1_2}</td>
-					<td>{Q1_3}</td>
-					<td>{Q1_4}</td>
-					<td>{Q1_5}</td>
-					<td>{ClassID}</td>
-                    <td>{StartTime}</td>
-                    <td>{EndTime}</td>
-					<td>{ObsID}</td>
-				</tr>
-			)
-		})
-	}
+				return (
+					<tr key={RecordedDate}>
+						<td>{RecordedDate}</td>
+						<td>{Q1_1}</td>
+						<td>{Q1_2}</td>
+						<td>{Q1_3}</td>
+						<td>{Q1_4}</td>
+						<td>{Q1_5}</td>
+						<td>{ClassID}</td>
+                    				<td>{StartTime}</td>
+                    				<td>{EndTime}</td>
+						<td>{ObsID}</td>
+					</tr>
+					)
+				})
+			}
 	render() {
 		return (
 			<div>
