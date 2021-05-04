@@ -92,9 +92,9 @@ After installation, the MySQL Workbench should already have connected to your ne
 9. Ensure that the current directory of the third terminal window is the folder containing mysql.exe (C:\Program Files\MySQL\MySQL Server 8.0\bin)
 ### Start the Web Server
 1. Enter ```mysql -u root -p``` into the third terminal window.
-2 It will ask for a password. Enter the password you created when setting up the MySQL server.
-3 Your should see the directory change to ```mysql>```
-4 In the first terminal window (base folder) run ```npm start``` and wait for the 'listening on port 5000' message.
-5 In the second terminal window (react-ui) run ```npm start``` and wait for the website to automatically open in a new browser tab.
+2. It will ask for a password. Enter the password you created when setting up the MySQL server.
+3. Your should see the directory change to ```mysql>```
+4. In the first terminal window (base folder) run ```npm start``` and wait for the 'listening on port 5000' message.
+5. In the second terminal window (react-ui) run ```npm start``` and wait for the website to automatically open in a new browser tab.
 
 ## The Site Should Now Be Running
