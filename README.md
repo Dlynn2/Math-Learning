@@ -54,6 +54,10 @@ Change the following line to match your password created when initializing the D
 Where 'test' is the name of the local DB you created (in our case, we called it 'test')  
 Where 'root' is root  
 Where 'newpassword' is whichever password you assigned when initializing the DB  
+
+Remove the 'port' from the sequelize object  
+Remove the 'dialectOptions' from the sequelize object  
+*NOTE: Make sure you stash these changes before committing (or add db.js to a .gitignore) as the server relies on this file for its own DB*
 ### Voilà  
 You should now be able to run a development server  
 Run ```npm start```, first, in the **Ampd** directory  
@@ -61,6 +65,9 @@ Run ```npm start```, second, in the **react-ui** directory
 
 #### **NOTE:**  
 I have noticed that whenever I shut off my computer (or even log off), I have to reinitialize the MySQL Server before running ```npm start``` in the respective directories. Just be sure to use the legacy password and keep it consistent with what you used before. You shouldn't have to re-import any data into the local DB.
+
+*For additional help with Mac installation, contact [Zach](mailto:zapps98@gmail.com)*  
+
 
 ## Steps for Setting Up Development Server on Windows
 ### MySQL Setup
