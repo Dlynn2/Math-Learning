@@ -237,6 +237,26 @@ async function getAllEnrolledTimes(sid) {
 	return times
 }
 
+async function getNumberList(cid) {
+  var foundStudents = ""
+	var foundSubs = []
+  //This is where you need to work next!
+  await IsEnrolledIn.findAll({
+		where: {ClassID: cid}
+	})
+	.then(found => {
+		foundStudents = found
+	})
+	.catch(err => {
+		console.log("getStudentsIn ERR: "+err)
+	})
+	for(var i = 0; i < foundStudents.length; i++) {
+		var id = foundStudents[i].dataValues.Phonenumber
+		foundSubs.push(id)
+	}
+	return foundSubs
+}
+
 async function getSubscriptionsFor(cid) {
 	var foundStudents = ""
 	var foundSubs = []
@@ -350,6 +370,10 @@ users.post('/profile/allEnrolledTimes', async (req, res) => {
 	res.json(await getAllEnrolledTimes(req.body.sid))
 })
 
+users.post('/profile/getNumberList', async (req, res) => {
+  res.json(await getNumberList(req.body.cid))
+})
+
 users.post('/profile/datatable', async (req, res) => {
 	res.json(await getDatatable())
 })
@@ -398,7 +422,8 @@ users.post('/profile', async (req, res) => {
     console.log("FoundID: "+foundid)
     const classJoined = {
         StudentID: req.body.userid,
-        ClassID: foundid
+        ClassID: foundid,
+        Phonenumber: req.body.phonenumber
     }
     if (foundid != "") {
     	IsEnrolledIn.create(classJoined)

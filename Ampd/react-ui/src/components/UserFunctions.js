@@ -68,6 +68,19 @@ export const getSubscriptionsFor = cid => {
 		})
 }
 
+export const getNumberList = classCode => {
+  return axios
+    .post('users/profile/getNumberList', {
+      cid: classCode
+    })
+    .then(res => {
+      return res.data
+    })
+    .catch(err => {
+      console.log('getNumberList ERR: ' + err)
+    })
+}
+
 export const getCurrentClass = data => {
 	return axios
 		.post('users/profile/getCurrentClass', {
@@ -120,6 +133,19 @@ export const isClassNow = data => {
 		.catch(err=>{
 			console.log("AXIOS isClassNow ERR: "+err)
 		})
+}
+
+export const classList = cid => {
+  return axios
+  .post('users/profile/classList', {
+    classID: cid
+  })
+  .then(res =>{
+    return res.data
+  })
+  .catch(err=>{
+    console.log("QuestionCount ERR: "+err)
+  })
 }
 
 export const getQuestionCount = cid => {
@@ -203,7 +229,8 @@ export const join_class = classJoined => {
     return axios
         .post('users/profile', {
             userid: classJoined.userid,
-            class_code:classJoined.class_code
+            class_code:classJoined.class_code,
+            phonenumber: classJoined.phonenumber
         })
         .then(res =>{
             return(res)

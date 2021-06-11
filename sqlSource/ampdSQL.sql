@@ -19,9 +19,10 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 -- -----------------------------------------------------
 -- Table `mathLearningDB`.`ACCOUNT`
 -- -----------------------------------------------------
-CREATE TABLE IF
+-- Old Account Table
+/*CREATE TABLE IF
 NOT EXISTS `mathLearningDB`.`ACCOUNT` (
-  `UserID` INT NOT NULL,
+  `UserID` INT NOT NULL AUTO_INCREMENT,
   `FName` VARCHAR(45) NULL,
   `LName` VARCHAR(45) NULL,
   `Email` VARCHAR(45) NULL,
@@ -29,10 +30,29 @@ NOT EXISTS `mathLearningDB`.`ACCOUNT` (
   `Username` VARCHAR(45) NULL,
   `PasswordHash` VARCHAR(45) NULL,
   `AccountType` VARCHAR(45) NULL,
-  `CreatedTimestamp` FLOAT NULL,
-  `ConsentBool` TINYINT NULL,
+  `CreatedTimestamp` timestamp NOT NULL DEFAULT current_timestamp(),
+  `ConsentBool` TINYINT(4) NULL,
   PRIMARY KEY (`UserID`))
-ENGINE = InnoDB;
+ENGINE = InnoDB;*/
+
+CREATE TABLE IF
+NOT EXISTS `mathLearningDB`.`ACCOUNT` (
+  `UserID` int(11) NOT NULL AUTO_INCREMENT,
+  `FName` varchar(45) DEFAULT NULL,
+  `LName` varchar(45) DEFAULT NULL,
+  `Email` varchar(255) DEFAULT NULL,
+  `Phonenumber` varchar(10) DEFAULT NULL,
+  `Username` varchar(45) DEFAULT NULL,
+  `PasswordHash` varchar(60) DEFAULT NULL,
+  `AccountType` varchar(45) DEFAULT NULL,
+  `CreatedTimestamp` timestamp NOT NULL DEFAULT current_timestamp(),
+  `ConsentBool` tinyint(4) DEFAULT NULL,
+  `Subscription` varchar(2000) DEFAULT NULL,
+  `UID` int(11) DEFAULT NULL,
+  PRIMARY KEY (`UserID`),
+  KEY `UID` (`UID`),
+  CONSTRAINT `ACCOUNT_ibfk_1` FOREIGN KEY (`UID`) REFERENCES `UNIVERSITY` (`UID`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 -- -----------------------------------------------------
 -- Table `mathLearningDB`.`UNIVERSITY`
@@ -48,7 +68,8 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `mathLearningDB`.`CLASS`
 -- -----------------------------------------------------
-CREATE TABLE IF
+-- Old Class Table
+/*CREATE TABLE IF
 NOT EXISTS `mathLearningDB`.`CLASS` (
   `ClassID` INT NOT NULL,
   `ClassName` VARCHAR(45) NULL,
@@ -63,7 +84,22 @@ NOT EXISTS `mathLearningDB`.`CLASS` (
     REFERENCES `mathLearningDB`.`UNIVERSITY` (`UID`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+ENGINE = InnoDB;*/
+
+CREATE TABLE IF NOT EXISTS `mathLearningDB`.`CLASS` (
+  `ClassID` int(11) NOT NULL AUTO_INCREMENT,
+  `ClassName` varchar(45) DEFAULT NULL,
+  `ClassCode` varchar(45) NOT NULL,
+  `StartDate` date DEFAULT NULL,
+  `EndDate` date DEFAULT NULL,
+  `StartTime` time DEFAULT NULL,
+  `EndTime` time DEFAULT NULL,
+  `Days` varchar(20) DEFAULT NULL,
+  `UniversityID` int(11) DEFAULT NULL,
+  PRIMARY KEY (`ClassID`,`ClassCode`),
+  KEY `CLASS_UID` (`UniversityID`),
+  CONSTRAINT `CLASS_UID` FOREIGN KEY (`UniversityID`) REFERENCES `UNIVERSITY` (`UID`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=utf8;
 
 -- -----------------------------------------------------
 -- Table `mathLearningDB`.`SURVEY_QUESTION`
@@ -103,7 +139,8 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `mathLearningDB`.`SURVEY_RESPONSE`
 -- -----------------------------------------------------
-CREATE TABLE IF
+-- Old Survey_Response Table
+/*CREATE TABLE IF
 NOT EXISTS `mathLearningDB`.`SURVEY_RESPONSE` (
   `RecordedDate` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `ResponseId` INT NOT NULL,
@@ -120,7 +157,22 @@ NOT EXISTS `mathLearningDB`.`SURVEY_RESPONSE` (
   `EndTime` VARCHAR(45) NULL,
   `ObsID` VARCHAR(12) NOT NULL,
   PRIMARY KEY (`ResponseId`, `RecordedDate`, `ClassID`))
-ENGINE = InnoDB;
+ENGINE = InnoDB;*/
+
+CREATE TABLE `SURVEY_RESPONSE` (
+  `RecordedDate` timestamp NOT NULL DEFAULT current_timestamp(),
+  `ResponseId` varchar(12) DEFAULT '',
+  `Q1_1` int(11) DEFAULT NULL,
+  `Q1_2` int(11) DEFAULT NULL,
+  `Q1_3` int(11) DEFAULT NULL,
+  `Q1_4` int(11) DEFAULT NULL,
+  `Q1_5` int(11) DEFAULT NULL,
+  `ClassID` int(11) NOT NULL,
+  `StartTime` varchar(45) DEFAULT NULL,
+  `EndTime` varchar(45) DEFAULT NULL,
+  `ObsID` varchar(11) NOT NULL,
+  PRIMARY KEY (`RecordedDate`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- -----------------------------------------------------
 -- Table `mathLearningDB`.`CLASS_RESPONSE`
@@ -155,7 +207,8 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `mathLearningDB`.`IS_ENROLLED_IN`
 -- -----------------------------------------------------
-CREATE TABLE IF
+-- Old IS_ENROLLED_IN Table
+/*CREATE TABLE IF
 NOT EXISTS `mathLearningDB`.`IS_ENROLLED_IN` (
   `StudentID` INT NOT NULL,
   `ClassID` INT NOT NULL,
@@ -171,12 +224,23 @@ NOT EXISTS `mathLearningDB`.`IS_ENROLLED_IN` (
     REFERENCES `mathLearningDB`.`CLASS` (`ClassID`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+ENGINE = InnoDB;*/
+
+CREATE TABLE `IS_ENROLLED_IN` (
+  `StudentID` int(11) NOT NULL,
+  `ClassID` int(11) NOT NULL,
+  `Phonenumber` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`StudentID`,`ClassID`),
+  KEY `IEI_CID` (`ClassID`),
+  CONSTRAINT `IEI_CID` FOREIGN KEY (`ClassID`) REFERENCES `CLASS` (`ClassID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `IEI_SID` FOREIGN KEY (`StudentID`) REFERENCES `ACCOUNT` (`UserID`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- -----------------------------------------------------
 -- Table `mathLearningDB`.`IS_ADMINISTERED_BY`
 -- -----------------------------------------------------
-CREATE TABLE IF
+-- Old IS_ADMINISTERED_BY Table
+/*CREATE TABLE IF
  NOT EXISTS `mathLearningDB`.`IS_ADMINISTERED_BY` (
   `ClassID` INT NOT NULL,
   `AdminID` INT NOT NULL,
@@ -192,7 +256,16 @@ CREATE TABLE IF
     REFERENCES `mathLearningDB`.`ACCOUNT` (`UserID`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+ENGINE = InnoDB;*/
+
+CREATE TABLE IF NOT EXISTS `IS_ADMINISTERED_BY` (
+  `ClassID` int(11) NOT NULL,
+  `AdminID` int(11) NOT NULL,
+  PRIMARY KEY (`ClassID`,`AdminID`),
+  KEY `IAB_AID` (`AdminID`),
+  CONSTRAINT `IAB_AID` FOREIGN KEY (`AdminID`) REFERENCES `ACCOUNT` (`UserID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `IAB_CID` FOREIGN KEY (`ClassID`) REFERENCES `CLASS` (`ClassID`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;

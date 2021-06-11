@@ -11,6 +11,9 @@ module.exports = db.sequelize.define(
         ClassID: {
             type: Sequelize.INTEGER,
             primaryKey: true
+        },
+        Phonenumber: {
+            type: Sequelize.STRING,
         }
     },
     {

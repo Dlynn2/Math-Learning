@@ -1,4 +1,5 @@
 import axios from 'axios';
+const msg = require('./SendSMS');
 
 var schedule = require('node-schedule');
 export const inClassNotificationSchedules = times => {
@@ -31,17 +32,22 @@ export const inClassNotificationSchedules = times => {
 	classID:times.classCode,
         sectionID:sectionID
 	}
+  //console.log("startTime: " + startTime + " endTime: " + endTime + " startMins: " + startMins + " endMins: " + endMins);
+  //console.log("midpoint: " + midpoint + " testNumber: " + testNumber + " firstSendMinute: " + firstSendMinute + " thirds: " + thirds);
+  //console.log("section: " + section + " sectionID: " + sectionID);
     //sends the attendance notification
     axios.post("push/attendanceNotification", {
         userid: studentDetails.userid
     })
-    console.log(firstSendMinute)
+    //console.log("firstSendMinute: " + firstSendMinute);
     //create a cron like job named test that will activate once the first send minute hits.with student details bound to it.
     var test = schedule.scheduleJob(firstSendMinute.toString() + ' * * * *', function (student) {
+      msg.SendSMS(times.phonenumber);
         axios.post("push/surveyNotification", {
             userid: student.userid,
             classID:student.classID,
-            sectionID:student.sectionID
+            sectionID:student.sectionID,
+            phonenumber: student.phonenumber
         })
 
         var secondSendMinute = parseInt(parseInt(startTime[1]) + midpoint + Math.random() * (midpoint));
@@ -60,7 +66,7 @@ export const inClassNotificationSchedules = times => {
          classID:student.classID,
          sectionID:sectionID
         }
-	console.log(secondSendMinute)
+	//console.log("secondSendMinute: " + secondSendMinute)
         var test2 = schedule.scheduleJob(secondSendMinute.toString() + ' * * * *', function (studentidTwo) {
             axios.post("push/surveyNotification", {
                 userid: studentidTwo.userid,

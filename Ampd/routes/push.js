@@ -2,6 +2,10 @@ const router = require("express").Router()
 module.exports = router
 const webpush = require("web-push")
 const Account = require("../models/Account")
+const jwt_decode = require("jwt-decode");
+const axios = require("axios");
+const schedule = require('node-schedule');
+const inClassNotificationSchedules = "./SchedulingFunctions";
 
 //setting VAPID KEYS, Should not change. Connected to google API
 webpush.setGCMAPIKey(process.env.GOOGLE_API_KEY || "AIzaSyBiAIkdYnjOURvt4nHGQVEOHXyZTopqnHU")
@@ -19,7 +23,8 @@ const surveyNotification = {
   vibrate: [200, 100, 200],
   data: {
     classID: '',
-    obsID:''
+    obsID:'',
+    phonenumber:''
   },
   actions: [
     { action: 'close', title: 'close this :(', }
@@ -75,15 +80,18 @@ router.post("/subscriptionReg", (req, res, next) => {
 
 //this is called when a notification is sent out
 router.post("/surveyNotification", (req, res) => {
-	console.log(req.body.classID)
   Account.findOne({
-    attributes: ['subscription'],
+    //attributes: ['phonenumber'],
     where: { userid: req.body.userid }
   })
     .then(subscription => {
-      subscription = JSON.parse(subscription.dataValues.subscription)
+      subscription = JSON.parse(subscription.dataValues.phonenumber)
   surveyNotification.data.classID = req.body.classID
   surveyNotification.data.obsID = req.body.sectionID
+  surveyNotification.data.phonenumber = req.body.phonenumber
+
+  var concatNum = ("+1" + req.body.phonenumber);
+  var surveyLink = "https://ampdmath.com/survey";
 //for each loop that loops through all subscriptions in account and if the subscription is invalid it is removed
       subscription.forEach(function (deviceSub, index, object) {
         webpush.sendNotification(deviceSub, JSON.stringify(surveyNotification))
@@ -102,13 +110,24 @@ router.post("/surveyNotification", (req, res) => {
 
 router.post("/attendanceNotification", (req, res) => {
   Account.findOne({
-    attributes: ['subscription'],
+    attributes: ['phonenumber'],
     where: { userid: req.body.userid }
   })
     .then(subscription => {
-      subscription = JSON.parse(subscription.dataValues.subscription)
+      /*subscription = JSON.parse(subscription.dataValues.phonenumber)
+      console.log("Subscription = " + subscription);
+      console.log("Subsription.dataValues.userid = " + subscription.dataValues.userid);
+      surveyNotification.data.classID = req.body.classID
+      surveyNotification.data.phonenumber = req.body.phonenumber
+      var jwt_decode = require("jwt-decode");
+      var axios = require("axios");
+      var schedule = require('node-schedule');
+      var inClassNotificationSchedules = "./SchedulingFunctions";
+      var concatNum = ("+1" + subscription.dataValues.userid);
+      var surveyLink = "https://ampdmath.com/survey";
+      console.log("Sending a message to: " + concatNum);
 //for each loop that loops through all subscriptions in account and if the subscription is invalid it is removed
-      subscription.forEach(function (deviceSub, index, object) {
+      /*subscription.forEach(function (deviceSub, index, object) {
         webpush.sendNotification(deviceSub, JSON.stringify(attendanceNotification))
           .catch(() => {
             console.log('still catching an error' + ' ' + JSON.stringify(index))
@@ -118,7 +137,7 @@ router.post("/attendanceNotification", (req, res) => {
                 { where: { userid: req.body.userid } }
               )
           })
-      });
+      });*/
     })
   res.sendStatus(200)
 })
