@@ -241,7 +241,6 @@ class Profile extends Component {
                     <td>{StartTime}</td>
                     <td>{EndTime}</td>
                     <td>{Days}</td>
-		    <td><Button onClick={() => this.checkTime(StartTime, EndTime, Days,ClassID)}>Attendance</Button></td>
                 </tr>
             )
 	    }
@@ -431,9 +430,10 @@ class Profile extends Component {
 		{this.state.admin_level === '3' ?
 		//Changed to test texts
 		//<button onClick={() => subscribePush(this.state.userid)}> Subscribe </button>
+    //<a href="/survey"> SURVEY </a>
+    //            <button onClick={() => unsubscribePush()}> Unsubscribe </button>
 		<div>
-    <a href="/survey"> SURVEY </a>
-                <button onClick={() => unsubscribePush()}> Unsubscribe </button>
+
 		<div>
                     <div id="subscriptionStatusWarn" style={{ display:'none',width:'60%', margin:'auto' }}>
                         <UncontrolledAlert  color="warning">
@@ -487,7 +487,6 @@ class Profile extends Component {
 					<th>Start Time</th>
 					<th>End Time</th>
 					<th>Class Days</th>
-					<th>Attendance</th>
 					</React.Fragment>
 					:
 					<React.Fragment>

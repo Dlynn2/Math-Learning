@@ -106,6 +106,8 @@ class Navbar extends Component {
         )
 
         return (
+          //Old test tab:
+          //{localStorage.usertoken ? jwt_decode(localStorage.usertoken).accountType !== '1'? <NavLink className="link" href={"/shiny/sample-apps/mathLearningShiny/?teacherID="+jwt_decode(localStorage.usertoken).userid}>Test</NavLink> : <br style={{display:"none"}}></br>: <br style={{display:"none"}}></br>}
             <div main>
                 <Navbar1 color="faded" light>
                     <NavbarBrand href="/" className="mr-auto"fixed="left"><img src={logo} alt="AMP'd Engagement"></img></NavbarBrand>
@@ -114,7 +116,6 @@ class Navbar extends Component {
                         <img src={menu} alt="AMP'd Engagement"></img>
                       </DropdownToggle>
                       <DropdownMenu>
-                        {localStorage.usertoken ? jwt_decode(localStorage.usertoken).accountType !== '1'? <NavLink className="link" href={"/shiny/sample-apps/mathLearningShiny/?teacherID="+jwt_decode(localStorage.usertoken).userid}>Test</NavLink> : <br style={{display:"none"}}></br>: <br style={{display:"none"}}></br>}
                         {localStorage.usertoken ? jwt_decode(localStorage.usertoken).accountType === '1' ? userLink : jwt_decode(localStorage.usertoken).accountType === '2' ? teacherLink : derekLink : loginRegLink}
                       </DropdownMenu>
                     </Dropdown>

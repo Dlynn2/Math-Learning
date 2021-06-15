@@ -40,6 +40,10 @@ class FAQ extends Component{
                   at MSU and mathematics instructor with over 12 years of experience in teaching. The design and implementation of the web
                   application was carried out by three MSU undergraduate students: Kyle Rathman (Backend Engineer), Kendall Black (Frontend
                   Engineer), and Dylan Lynn (Project Architect).</p>
+                  <hr></hr>
+                  <p class="ans">AMP'D was then continued as a project by <a target="_blank" href="https://www.linkedin.com/in/zacharyschallenberger/">Zachary Schallenberger</a> and Tristan Stevens. Together, they implemented a new way
+                  of sending surveys to students through text messages. They also redesigned many of the components of the site and set up source
+                  control and laid out the architecture for future projects for future students.</p>
                 <h2 class="q">How can I sign up?</h2>
                   <p class="ans">If you are a student enrolled in a class using AMPD, click the menu bar in the upper right
                   then click "Register" and enter the class code provided by your instructor. If you are an educator that would
