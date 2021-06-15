@@ -5,6 +5,7 @@ import {
 } from 'reactstrap';
 import { survey, getCurrentClass, getEnrolledClasses, getAllEnrolledTimes, getEnrolledIn } from "./UserFunctions"
 import jwt_decode from 'jwt-decode'
+import "./css/survey.css"
 class Survey extends Component {
     constructor() {
         super()
@@ -40,6 +41,9 @@ class Survey extends Component {
     }
 
     async componentDidMount() {
+      window.onload = function(){
+        document.getElementById("loggedin").innerHTML = "Logged in as: " + jwt_decode(localStorage.usertoken).fName;
+      }
       console.log("Starting...");
         if ((localStorage.usertoken) != null){
           console.log("Mounting...");
@@ -178,6 +182,7 @@ class Survey extends Component {
                     <ModalHeader>
                         How are you feeling in math right now?
                     </ModalHeader>
+                    <p id="loggedin">NOT CURRENTLY LOGGED IN</p>
                     <ModalBody>
                         <div style={{ textAlign: "center" }}>
                             <h4>Concentration</h4>
@@ -234,8 +239,8 @@ class Survey extends Component {
                         </div>
                     </ModalBody>
                     <ModalFooter>
-                        <Button color="primary" onClick={this.submit}>Submit survey! :)</Button>
-                        <Button color="danger" onClick={this.toggle}>Click here or anywhere outside survey to dismiss :(</Button>
+                        <Button color="primary" onClick={this.submit}>SUBMIT</Button>
+                        <Button color="danger" onClick={this.toggle}>CANCEL</Button>
                     </ModalFooter>
                 </Modal>
             </div>
