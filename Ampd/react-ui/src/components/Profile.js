@@ -220,7 +220,6 @@ class Profile extends Component {
             return JSON.stringify(res);
           }));
       });
-      alert("Class started! Please leave this page open; it will send text messages to students throughout the class period");
       const scheduleData = {
           userid:this.state.userid,
           startTime:classStartTime,
@@ -228,6 +227,7 @@ class Profile extends Component {
           classCode:classCode,
       }
       inClassNotificationSchedules(scheduleData)
+      alert("Class started! Please leave this page open; it will send text messages to students throughout the class period");
     }
 
 
