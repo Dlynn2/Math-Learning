@@ -1,0 +1,153 @@
+/*#313D4F is the color of the image text*/
+h1.header{
+  color: #313d4f;
+  font-size: 50px;
+  font-family: "Arial", sans-serif;
+  font-weight: bold;
+
+}
+div.content {
+  display: inline;
+  width:auto;
+  align-items: center;
+  width: 750px;
+
+}
+
+div.body {
+  display: inline-block;
+  max-width: 750px;
+  margin: auto;
+  min-width: 350px;
+  margin-bottom: 50px;
+  background-color: #F9F2E7;
+  border-style: groove;
+  border-color:#313d4f;
+}
+
+div.text {
+  display: inherit;
+  margin: inherit;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-bottom: 1px;
+}
+
+h2.q {
+  font-size: 26px;
+  padding-left: 5px;
+  vertical-align: top;
+  text-align: left;
+
+}
+
+p.ans {
+  font-size: 16px;
+  padding-left: 10px;
+  text-align: left;
+  color: #727D8C;
+
+
+}
+
+tr.left{
+  text-align: left;
+}
+
+tr.right{
+  text-align: right;
+}
+
+.site-footer
+{
+  background-color:#f2f2f2;
+  padding:45px 0 20px;
+  font-size:15px;
+  line-height:24px;
+  color:#737373;
+}
+.site-footer hr
+{
+  border-top-color:#bbb;
+  opacity:0.5
+}
+.site-footer hr.small
+{
+  margin:20px 0
+}
+.site-footer h6
+{
+  color:black;
+  font-size:16px;
+  text-transform:uppercase;
+  margin-top:5px;
+  letter-spacing:2px
+}
+.site-footer a
+{
+  color:#737373;
+}
+.site-footer a:hover
+{
+  color:#3366cc;
+  text-decoration:none;
+}
+.footer-links
+{
+  padding-left:0;
+  list-style:none
+}
+.footer-links li
+{
+  display:block;
+	padding: .25em;
+}
+.footer-links a
+{
+  color:#737373
+}
+.footer-links a:active,.footer-links a:focus,.footer-links a:hover
+{
+  color:#3366cc;
+  text-decoration:none;
+}
+.footer-links.inline li
+{
+  display:inline-block
+}
+.site-footer .social-icons
+{
+  text-align:right
+}
+.site-footer .social-icons a
+{
+  width:40px;
+  height:40px;
+  line-height:40px;
+  margin-left:6px;
+  margin-right:0;
+  border-radius:100%;
+  background-color:#dcd6cc
+}
+.copyright-text
+{
+  margin:0
+}
+@media (max-width:991px)
+{
+  .site-footer [class^=col-]
+  {
+    margin-bottom:30px
+  }
+}
+@media (max-width:767px)
+{
+  .site-footer
+  {
+    padding-bottom:0
+  }
+  .site-footer .copyright-text,.site-footer .social-icons
+  {
+    text-align:center
+  }
+}

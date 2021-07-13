@@ -1,0 +1,34 @@
+
+.active{
+  color: #313D4F;
+}
+
+
+li {
+  list-style: none;
+  font-size: 24px;
+
+}
+
+li.link {
+  color: #313D4F;
+
+}
+
+img{
+  width: 100%;
+}
+
+.link{
+  color: rgb(127,127,127);
+}
+
+
+.NavbarBrand>img{
+  padding: none;
+}
+
+.hamMenu{
+  width: 50px;
+  color: green;
+}
